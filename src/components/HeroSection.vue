@@ -37,6 +37,13 @@ const { tm, t } = useI18n()
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a :href="`mailto:${profile.email}`" class="btn-primary">{{ t('hero.ctaPrimary') }}</a>
         <a href="#projets" class="btn-secondary">{{ t('hero.ctaSecondary') }}</a>
+        <a
+          href="/Cv%20%E2%80%93%20Mohamed%20Touhami%20Rhaima%20.pdf"
+          download
+          class="btn-secondary"
+        >
+          {{ t('hero.ctaResume') }}
+        </a>
       </div>
 
       <div class="mt-7 flex flex-wrap gap-3">

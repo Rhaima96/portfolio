@@ -19,6 +19,7 @@
       "Développeur Senior Full-Stack avec 6+ ans d'expérience, j'accompagne des équipes sur des CRM, LMS, plateformes métiers, e-commerce et produits SaaS avec une approche orientée performance, lisibilité et impact.",
     ctaPrimary: 'Me contacter',
     ctaSecondary: 'Voir les projets',
+    ctaResume: 'Télécharger le CV',
     stats: [
       { value: '6+', label: "années d'expérience" },
       { value: '10k+', label: 'commandes traitées sur un projet e-commerce' },
@@ -181,6 +182,7 @@
     text:
       'Disponible pour des collaborations en freelance, CDI, lead technique ou accompagnement produit.',
     email: 'Envoyer un email',
+    resume: 'Télécharger le CV',
     linkedin: 'LinkedIn',
     github: 'GitHub',
     phone: 'Téléphone',

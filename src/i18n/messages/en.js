@@ -19,6 +19,7 @@
       'Senior Full-Stack Developer with 6+ years of experience delivering CRM, LMS, business platforms, e-commerce systems, and SaaS products with a strong focus on performance, clarity, and user impact.',
     ctaPrimary: 'Get in touch',
     ctaSecondary: 'View projects',
+    ctaResume: 'Download resume',
     stats: [
       { value: '6+', label: 'years of experience' },
       { value: '10k+', label: 'orders processed on an e-commerce platform' },
@@ -181,6 +182,7 @@
     text:
       'Available for freelance work, full-time opportunities, technical leadership, or product delivery support.',
     email: 'Send email',
+    resume: 'Download resume',
     linkedin: 'LinkedIn',
     github: 'GitHub',
     phone: 'Phone',

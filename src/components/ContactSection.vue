@@ -25,6 +25,13 @@ const { t } = useI18n()
 
     <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start lg:justify-end">
       <a :href="`mailto:${profile.email}`" class="btn-primary">{{ t('contact.email') }}</a>
+      <a
+        href="/Cv%20%E2%80%93%20Mohamed%20Touhami%20Rhaima%20.pdf"
+        download
+        class="btn-secondary"
+      >
+        {{ t('contact.resume') }}
+      </a>
       <a :href="profile.linkedin" target="_blank" rel="noreferrer" class="btn-secondary">
         {{ t('contact.linkedin') }}
       </a>
