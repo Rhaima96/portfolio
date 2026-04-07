@@ -13,13 +13,21 @@ const { tm, t } = useI18n()
 
 <template>
   <section class="grid gap-7 px-2 pb-3 pt-6 lg:grid-cols-[1.2fr_0.8fr]">
-    <div class="hero-panel hero-enter relative overflow-hidden p-6 sm:p-10">
+    <div class="hero-panel hero-enter order-2 relative overflow-hidden p-6 sm:p-10 lg:order-1">
       <div class="pointer-events-none absolute -left-20 top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.24),transparent_68%)] blur-2xl" />
       <div class="pointer-events-none absolute -bottom-20 right-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(244,114,182,0.18),transparent_68%)] blur-2xl" />
       <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.65),transparent)]" />
+      <div class="mb-8 flex items-center justify-between rounded-[22px] border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-4 py-3">
+        <div class="flex items-center gap-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]" />
+          <span class="h-2.5 w-2.5 rounded-full bg-[var(--color-highlight)]" />
+          <span class="h-2.5 w-2.5 rounded-full bg-slate-400/70" />
+        </div>
+        <span class="font-mono text-xs text-[var(--color-muted)]">laravel-vue-portfolio.vue</span>
+      </div>
 
       <p class="label">{{ t('hero.availability') }}</p>
-      <h1 class="mt-4 max-w-[11ch] font-heading text-5xl leading-none font-bold tracking-[-0.05em] text-[var(--color-text)] sm:text-7xl">
+      <h1 class="mt-4 max-w-[12ch] font-heading text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-[var(--color-text)] sm:text-6xl xl:text-[4.35rem]">
         {{ t('hero.title') }}
       </h1>
       <p class="mt-5 max-w-3xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.03rem]">
@@ -29,6 +37,15 @@ const { tm, t } = useI18n()
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a :href="`mailto:${profile.email}`" class="btn-primary">{{ t('hero.ctaPrimary') }}</a>
         <a href="#projets" class="btn-secondary">{{ t('hero.ctaSecondary') }}</a>
+      </div>
+
+      <div class="mt-7 flex flex-wrap gap-3">
+        <span class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-3 py-2 font-mono text-xs text-[var(--color-muted)]">
+          stack: Laravel + Vue.js
+        </span>
+        <span class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-3 py-2 font-mono text-xs text-[var(--color-muted)]">
+          focus: performance, SEO, product
+        </span>
       </div>
 
       <ul class="mt-9 grid list-none gap-4 p-0 lg:grid-cols-3">
@@ -47,13 +64,13 @@ const { tm, t } = useI18n()
       </ul>
     </div>
 
-    <aside class="hero-side hero-enter-delay flex flex-col gap-5">
+    <aside class="hero-side hero-enter-delay order-1 flex flex-col gap-5 lg:order-2">
       <div class="photo-frame relative overflow-hidden rounded-[34px] p-3">
         <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,14,24,0)_45%,rgba(9,14,24,0.72)_100%)]" />
         <img
           src="/my_photo.jpeg"
           :alt="profile.name"
-          class="h-[420px] w-full rounded-[26px] object-cover object-center"
+          class="h-auto w-full rounded-[26px] object-contain object-top sm:h-[420px] sm:object-cover sm:object-center"
         />
         <div class="absolute inset-x-7 bottom-7">
           <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">

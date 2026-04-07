@@ -7,34 +7,34 @@
 }
 
 :root {
-  --color-bg: #f4f7fb;
-  --color-bg-soft: #f8fbff;
+  --color-bg: #f7f8fb;
+  --color-bg-soft: #fbfcfe;
   --color-surface: #ffffff;
-  --color-surface-strong: #f8fbff;
-  --color-text: #0f172a;
-  --color-muted: #52607a;
-  --color-line: rgba(148, 163, 184, 0.2);
-  --color-accent: #2563eb;
-  --color-accent-strong: #0f172a;
-  --color-highlight: #ec4899;
-  --shadow-soft: 0 30px 80px rgba(15, 23, 42, 0.12);
-  --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
+  --color-surface-strong: #f5f8f8;
+  --color-text: #101828;
+  --color-muted: #5d6b7f;
+  --color-line: rgba(94, 108, 132, 0.16);
+  --color-accent: #4f46e5;
+  --color-accent-strong: #312e81;
+  --color-highlight: #7c3aed;
+  --shadow-soft: 0 28px 70px rgba(16, 24, 40, 0.1);
+  --shadow-card: 0 12px 28px rgba(16, 24, 40, 0.07);
   color-scheme: light;
 }
 
 :root[data-theme='dark'] {
-  --color-bg: #060816;
-  --color-bg-soft: #0b1020;
-  --color-surface: #10182d;
-  --color-surface-strong: #151f38;
-  --color-text: #eef2ff;
-  --color-muted: #98a4c6;
-  --color-line: rgba(96, 115, 159, 0.2);
-  --color-accent: #60a5fa;
-  --color-accent-strong: #8b5cf6;
-  --color-highlight: #f472b6;
-  --shadow-soft: 0 34px 90px rgba(0, 0, 0, 0.45);
-  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.22);
+  --color-bg: #07111a;
+  --color-bg-soft: #0b1621;
+  --color-surface: #0f1d2a;
+  --color-surface-strong: #132434;
+  --color-text: #edf6f2;
+  --color-muted: #93a8b0;
+  --color-line: rgba(110, 136, 147, 0.18);
+  --color-accent: #818cf8;
+  --color-accent-strong: #6366f1;
+  --color-highlight: #a855f7;
+  --shadow-soft: 0 30px 80px rgba(0, 0, 0, 0.38);
+  --shadow-card: 0 14px 34px rgba(0, 0, 0, 0.22);
   color-scheme: dark;
 }
 
@@ -48,19 +48,23 @@ body {
   font-family: var(--font-sans);
   color: var(--color-text);
   background:
-    radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.18), transparent 22%),
-    radial-gradient(circle at 85% 8%, rgba(236, 72, 153, 0.12), transparent 20%),
-    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.1), transparent 28%),
-    linear-gradient(180deg, #f8fbff 0%, var(--color-bg) 100%);
+    radial-gradient(circle at 12% 12%, rgba(79, 70, 229, 0.12), transparent 20%),
+    radial-gradient(circle at 86% 10%, rgba(124, 58, 237, 0.14), transparent 18%),
+    linear-gradient(rgba(16, 24, 40, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 24, 40, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, #fcfcfd 0%, var(--color-bg) 100%);
+  background-size: auto, auto, 28px 28px, 28px 28px, auto;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 :root[data-theme='dark'] body {
   background:
-    radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.22), transparent 20%),
-    radial-gradient(circle at 86% 12%, rgba(139, 92, 246, 0.2), transparent 18%),
-    radial-gradient(circle at 50% 100%, rgba(236, 72, 153, 0.12), transparent 24%),
-    linear-gradient(180deg, #040611 0%, var(--color-bg) 100%);
+    radial-gradient(circle at 10% 10%, rgba(129, 140, 248, 0.16), transparent 18%),
+    radial-gradient(circle at 88% 12%, rgba(168, 85, 247, 0.16), transparent 16%),
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, #050d14 0%, var(--color-bg) 100%);
+  background-size: auto, auto, 28px 28px, 28px 28px, auto;
 }
 
 a {
@@ -96,6 +100,26 @@ button {
   box-shadow: var(--shadow-card);
 }
 
+.panel,
+.tool-card,
+.navbar-shell,
+.photo-frame,
+.glass-tile {
+  position: relative;
+}
+
+.panel::before,
+.tool-card::before,
+.navbar-shell::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.24), rgba(124, 58, 237, 0.24), transparent);
+}
+
 @utility label {
   @apply text-[0.72rem] font-extrabold uppercase tracking-[0.22em] text-[var(--color-muted)];
 }
@@ -109,36 +133,57 @@ button {
 }
 
 @utility nav-pill {
-  @apply rounded-2xl border border-[var(--color-line)] px-4 py-2.5 text-[var(--color-muted)] transition duration-300 hover:-translate-y-0.5 hover:text-[var(--color-text)];
-  background: var(--color-surface-strong);
+  @apply rounded-2xl border border-[var(--color-line)] px-4 py-2.5 text-[var(--color-accent)] transition duration-300 hover:-translate-y-0.5;
+  background: color-mix(in srgb, var(--color-accent) 8%, white);
+}
+
+.nav-pill-compact {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  min-width: 72px;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 0.8rem;
 }
 
 :root[data-theme='dark'] .nav-pill {
+  color: var(--color-text);
   background: var(--color-surface-strong);
 }
 
 @utility btn-primary {
   @apply inline-flex min-h-12 items-center justify-center rounded-2xl px-5 font-bold text-white transition duration-300 hover:-translate-y-0.5;
+  color: #ffffff !important;
   background: linear-gradient(135deg, var(--color-accent), var(--color-highlight));
   box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+  text-shadow: 0 1px 1px rgba(15, 23, 42, 0.18);
 }
 
 @utility btn-secondary {
-  @apply inline-flex min-h-12 items-center justify-center rounded-2xl border border-[var(--color-line)] px-5 font-bold text-[var(--color-text)] transition duration-300 hover:-translate-y-0.5;
+  @apply inline-flex min-h-12 items-center justify-center rounded-2xl border px-5 font-bold transition duration-300 hover:-translate-y-0.5;
+  color: var(--color-accent-strong);
+  border-color: color-mix(in srgb, var(--color-accent) 18%, var(--color-line));
+  background: color-mix(in srgb, var(--color-accent) 10%, white);
+}
+
+:root[data-theme='dark'] .btn-secondary {
+  color: var(--color-text);
+  border-color: var(--color-line);
   background: var(--color-surface-strong);
 }
 
 .hero-panel {
   background:
-    linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(236, 72, 153, 0.03)),
-    linear-gradient(180deg, rgba(37, 99, 235, 0.08), transparent 42%),
+    linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(124, 58, 237, 0.04)),
+    linear-gradient(180deg, rgba(79, 70, 229, 0.05), transparent 42%),
     var(--color-surface);
 }
 
 :root[data-theme='dark'] .hero-panel {
   background:
-    linear-gradient(135deg, rgba(96, 165, 250, 0.06), rgba(244, 114, 182, 0.04)),
-    linear-gradient(180deg, rgba(96, 165, 250, 0.08), transparent 42%),
+    linear-gradient(135deg, rgba(129, 140, 248, 0.08), rgba(168, 85, 247, 0.06)),
+    linear-gradient(180deg, rgba(129, 140, 248, 0.06), transparent 42%),
     var(--color-surface);
 }
 
@@ -149,7 +194,7 @@ button {
 .photo-frame {
   border: 1px solid var(--color-line);
   background:
-    linear-gradient(145deg, rgba(37, 99, 235, 0.1), rgba(236, 72, 153, 0.05)),
+    linear-gradient(145deg, rgba(79, 70, 229, 0.08), rgba(124, 58, 237, 0.06)),
     var(--color-surface);
   box-shadow: var(--shadow-card);
 }
@@ -158,6 +203,23 @@ button {
   border: 1px solid var(--color-line);
   background: var(--color-surface-strong);
   box-shadow: var(--shadow-card);
+}
+
+.tool-card {
+  background:
+    linear-gradient(180deg, rgba(79, 70, 229, 0.03), transparent 36%),
+    var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.tool-card:hover {
+  border-color: rgba(124, 58, 237, 0.28);
+}
+
+:root[data-theme='dark'] .tool-card {
+  background:
+    linear-gradient(180deg, rgba(129, 140, 248, 0.05), transparent 36%),
+    var(--color-surface);
 }
 
 :root[data-theme='dark'] .glass-tile,

@@ -61,6 +61,7 @@ function toggleLocale() {
     <AppHeader
       :profile="profile"
       :theme="theme"
+      :locale="currentLocale"
       @toggle-theme="toggleTheme"
       @toggle-locale="toggleLocale"
     />

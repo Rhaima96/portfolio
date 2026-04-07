@@ -7,6 +7,10 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  locale: {
+    type: String,
+    required: true,
+  },
   theme: {
     type: String,
     required: true,
@@ -18,21 +22,27 @@ defineEmits(['toggle-theme', 'toggle-locale'])
 const { t } = useI18n()
 const themeRef = toRef(props, 'theme')
 const themeLabel = computed(() => t(`toggles.theme.${themeRef.value}`))
+const themeIcon = computed(() => (props.theme === 'light' ? '🌙' : '☀️'))
+const localeFlag = computed(() => (props.locale === 'fr' ? '/flag-gb.svg' : '/flag-fr.svg'))
+const localeLabel = computed(() => (props.locale === 'fr' ? 'EN' : 'FR'))
+const localeTooltip = computed(() =>
+  props.locale === 'fr' ? 'Switch to English' : 'Passer en français',
+)
 </script>
 
 <template>
   <header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
-    <div class="navbar-shell mx-auto flex w-full max-w-[1240px] flex-col gap-4 rounded-[28px] px-4 py-3 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
-      <a href="#home" class="flex items-center gap-4">
+    <div class="navbar-shell mx-auto flex w-full max-w-[1240px] flex-wrap items-center justify-between gap-3 rounded-[28px] px-4 py-3 sm:px-5 lg:flex-row lg:gap-4">
+      <a href="#home" class="flex min-w-0 items-center gap-3 sm:gap-4">
         <span class="grid h-11 w-11 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--color-accent),var(--color-highlight))] font-heading text-sm font-extrabold tracking-[0.18em] text-white">
           MR
         </span>
 
-        <span>
-          <strong class="block font-heading text-base font-bold text-[var(--color-text)]">
+        <span class="min-w-0">
+          <strong class="block truncate font-heading text-sm font-bold text-[var(--color-text)] sm:text-base">
             {{ profile.name }}
           </strong>
-          <small class="mt-1 block text-sm text-[var(--color-muted)]">
+          <small class="mt-1 hidden truncate text-sm text-[var(--color-muted)] sm:block">
             {{ profile.role }} · {{ profile.stack }}
           </small>
         </span>
@@ -45,12 +55,25 @@ const themeLabel = computed(() => t(`toggles.theme.${themeRef.value}`))
         <a href="#contact" class="nav-pill">{{ t('nav.contact') }}</a>
       </nav>
 
-      <div class="flex flex-col gap-3 sm:flex-row">
-        <button type="button" class="nav-pill cursor-pointer" @click="$emit('toggle-locale')">
-          {{ t('toggles.language') }}
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button
+          type="button"
+          class="nav-pill nav-pill-compact cursor-pointer"
+          :title="localeTooltip"
+          :aria-label="localeTooltip"
+          @click="$emit('toggle-locale')"
+        >
+          <img :src="localeFlag" alt="" class="h-4 w-6 rounded-[2px] object-cover" />
+          <span class="text-xs font-bold tracking-[0.14em]">{{ localeLabel }}</span>
         </button>
-        <button type="button" class="nav-pill cursor-pointer" @click="$emit('toggle-theme')">
-          {{ themeLabel }}
+        <button
+          type="button"
+          class="nav-pill nav-pill-compact cursor-pointer"
+          :title="themeLabel"
+          :aria-label="themeLabel"
+          @click="$emit('toggle-theme')"
+        >
+          <span class="text-lg leading-none">{{ themeIcon }}</span>
         </button>
       </div>
     </div>
